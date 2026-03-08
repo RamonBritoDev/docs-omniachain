@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DOCS_DIR = path.resolve(__dirname, '../../docs');
+const DOCS_DIR = path.resolve(__dirname, '../docs');
 const OUTPUT_FILE = path.resolve(__dirname, '../src/assets/docsData.json');
 
 // We want to treat the base /docs as 'pt' since it's the original language
