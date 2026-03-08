@@ -1,0 +1,68 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-brand-50: #f5f3ff;
+  --color-brand-100: #ede9fe;
+  --color-brand-200: #ddd6fe;
+  --color-brand-300: #c4b5fd;
+  --color-brand-400: #a78bfa;
+  --color-brand-500: #8b5cf6;
+  --color-brand-600: #7c3aed;
+  --color-brand-700: #6d28d9;
+  --color-brand-800: #5b21b6;
+  --color-brand-900: #4c1d95;
+
+  --color-background-dark: #09090b;
+  --color-surface-dark: #18181b;
+  --color-border-dark: #27272a;
+}
+
+@layer base {
+  body {
+    @apply antialiased bg-white text-gray-900 dark:bg-background-dark dark:text-gray-100;
+  }
+
+  /* Custom Scrollbar for Webkit */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-700 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-gray-600;
+  }
+
+  /* Custom Scrollbar for Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db transparent;
+  }
+}
+
+.dark * {
+  scrollbar-color: #374151 transparent;
+}
+
+@layer components {
+  .grid.cards {
+    @apply grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 my-8;
+  }
+
+  .grid.cards>ul {
+    @apply m-0 p-0 list-none contents;
+  }
+
+  .grid.cards>ul>li {
+    @apply rounded-xl border border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-surface-dark p-6 transition-all hover:border-brand-500/50 hover:shadow-sm;
+  }
+}
