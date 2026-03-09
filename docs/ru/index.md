@@ -2,7 +2,7 @@
   <h1>Омниячейн</h1>
 </div>
 
-Среда Python для агентов ИИ — асинхронный, мультимодальный, собственный MCP.
+Платформа Python для агентов ИИ — асинхронный, мультимодальный, собственный MCP.
 
 <div class="сеточные карты" уценка>
 
@@ -19,16 +19,16 @@
 
 ## Быстрый старт
 
-``` питон
-из агента импорта omniachain, Anthropic, калькулятора, web_search
+```python
+from omniachain import Agent, Anthropic, calculator, web_search
 
-агент = Агент(
-    поставщик = Антропный (),
-    инструменты = [калькулятор, web_search],
+agent = Agent(
+    provider=Anthropic(),
+    tools=[calculator, web_search],
 )
 
-result = await Agent.run("Сколько будет 1547 × 32 + √144?")
-print(result.content) # "49,516"
+result = await agent.run("Quanto é 1547 × 32 + √144?")
+print(result.content)  # "49.516"
 ```
 
 **3 строки. Никакого шаблона. Готовый.**

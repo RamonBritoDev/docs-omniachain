@@ -4,28 +4,28 @@
 
 ## Использование
 
-``` питон
-из импорта omniachain PlannerAgent, Anthropic, web_search, file_write
+```python
+from omniachain import PlannerAgent, Anthropic, web_search, file_write
 
-агент = ПланировщикАгент(
-    поставщик = Антропный (),
-    инструменты = [web_search, file_write],
+agent = PlannerAgent(
+    provider=Anthropic(),
+    tools=[web_search, file_write],
 )
 
-result = await Agent.run("Создайте отчет о тенденциях ИИ в 2025 году")
-print(result.metadata["plan"]) # Созданный план
-print(result.metadata["review"]) # Результат проверки
+result = await agent.run("Crie um relatório sobre tendências de IA em 2025")
+print(result.metadata["plan"])    # O plano criado
+print(result.metadata["review"])  # A revisão do resultado
 ```
 
 ## Цикл выполнения
 
-```русалка
-график ТД
-    A[Задача] --> B[План]
-    B --> C[Запустить с помощью инструментов]
-    C --> D[Обзор]
-    D -->|Удовлетворительно| E[Окончательный ответ]
-    D -->|Недостаточно| Б
+```mermaid
+graph TD
+    A[Tarefa] --> B[Plan]
+    B --> C[Execute com Tools]
+    C --> D[Review]
+    D -->|Satisfatório| E[Resposta Final]
+    D -->|Insuficiente| B
 ```
 
 1. **План**: LLM создает подробный план с пронумерованными шагами.

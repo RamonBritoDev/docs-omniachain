@@ -7,44 +7,49 @@
 
 ## Instalación básica
 
-```golpecito
-pip instalar omniachain
+```bash
+pip install omniachain
 ```
 
 ## Instalación con Extras
 
-=== "Todos los extras"
+#### Todos los extras
 
-```golpecito
-    pip instalar omniachain[todos]
-    ```
+```bash
+pip install omniachain[all]
+```
 
-=== "Vector (pgvector)"
+#### Vector (pgvector)
 
-```golpecito
-    pip instalar omniachain [vector]
-    ```
+```bash
+pip install omniachain[vector]
+```
 
-=== "Navegador (Dramaturgo)"
+#### Navegador (Playwright)
 
-```golpecito
-    pip instalar omniachain [navegador]
-    dramaturgo instala cromo
-    ```
+```bash
+pip install omniachain[browser]
+playwright install chromium
+```
 
-=== "Audio (Susurro)"
+#### Audio (Whisper)
 
-```golpecito
-    pip instala omniachain [audio]
-    ```
+```bash
+pip install omniachain[audio]
+```
 
 ## Desarrollo Local
 
-```golpecito
-clon de git https://github.com/omniachain/omniachain.git
-cd omnicadena
-instalación de pip -e ".[todos]"
-pruebas de pytest/ -v
+```bash
+# Clona el repositorio oficial
+git clone https://github.com/RamonBritoDev/omniachain.git
+cd omniachain
+
+# Instala en modo editable con todas las dependencias
+pip install -e ".[all]"
+
+# Ejecuta la suite de pruebas
+pytest tests/ -v
 ```
 
 ## Dependencias del sistema
@@ -52,37 +57,37 @@ pruebas de pytest/ -v
 !!! información "FFmpeg (para vídeo y audio)"
     `VideoLoader` y `AudioLoader` necesitan ffmpeg:
 
-=== "ventanas"
-        ```golpecito
-        instalación de alas Gyan.FFmpeg
+=== "Windows"
+        ```bash
+        winget install Gyan.FFmpeg
         ```
 
 === "macOS"
-        ```golpecito
-        instalar cerveza ffmpeg
+        ```bash
+        brew install ffmpeg
         ```
 
 === "Linux"
-        ```golpecito
-        sudo apto instalar ffmpeg
+        ```bash
+        sudo apt install ffmpeg
         ```
 
 ## Variables de entorno
 
 Cree un `.env` o exporte:
 
-```golpecito
+```bash
 # Claves API (al menos una)
-exportar ANTHROPIC_API_KEY="sk-..."
-exportar OPENAI_API_KEY="sk-..."
-exportar GROQ_API_KEY="gsk_..."
-exportar GOOGLE_API_KEY="..."
+export ANTHROPIC_API_KEY="sk-..."
+export OPENAI_API_KEY="sk-..."
+export GROQ_API_KEY="gsk_..."
+export GOOGLE_API_KEY="..."
 
 # Configuración opcional
-exportar OMNIA_DEFAULT_PROVIDER="antrópico"
-exportar OMNIA_DEFAULT_MODEL="claude-3-5-sonnet-20241022"
-exportar OMNIA_PGVECTOR_DSN="postgresql://usuario:pass@localhost/omniachain"
-exportar OMNIA_SECURITY_ENABLED="verdadero"
+export OMNIA_DEFAULT_PROVIDER="anthropic"
+export OMNIA_DEFAULT_MODEL="claude-3-5-sonnet-20241022"
+export OMNIA_PGVECTOR_DSN="postgresql://user:pass@localhost/omniachain"
+export OMNIA_SECURITY_ENABLED="true"
 ```
 
 !!! éxito "¡Listo!"

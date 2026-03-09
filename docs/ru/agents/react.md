@@ -3,21 +3,21 @@
 **ReAct** (Разум + Действие) следует циклу рассуждений:
 
 ```
-Мысль → Действие → Наблюдение → Мысль → ... → Ответ
+Thought → Action → Observation → Thought → ... → Answer
 ```
 
 ## Использование
 
-``` питон
-из импорта omniachain ReActAgent, Anthropic, web_search, калькулятора
+```python
+from omniachain import ReActAgent, Anthropic, web_search, calculator
 
-агент = ReActAgent(
-    поставщик = Антропный (),
-    инструменты=[web_search, калькулятор],
-    name="исследователь",
+agent = ReActAgent(
+    provider=Anthropic(),
+    tools=[web_search, calculator],
+    name="researcher",
 )
 
-result = await Agent.run("Какова численность населения Бразилии, разделенная на 27 штатов?")
+result = await agent.run("Qual a população do Brasil dividida por 27 estados?")
 ```
 
 Агент будет:

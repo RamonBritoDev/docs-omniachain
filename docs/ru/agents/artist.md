@@ -4,60 +4,60 @@
 
 ## Как это работает
 
-```русалка
-график LR
-    A[Описание] -->|LLM оптимизирует| B[Подробное описание]
-    B -->|Бэкэнд| C[🎨 Изображение]
+```mermaid
+graph LR
+    A[Descrição] -->|LLM otimiza| B[Prompt detalhado]
+    B -->|Backend| C[🎨 Imagem]
 ```
 
 «ArtistAgent» использует LLM для преобразования простых описаний в подробные оптимизированные подсказки перед созданием изображения.
 
 ## Использование
 
-``` питон
-из импорта omniachain ArtistAgent, OpenAI, Google
+```python
+from omniachain import ArtistAgent, OpenAI, Google
 
-# С DALL-E 3
-художник = ArtistAgent(provider=OpenAI(), image_backend="openai")
+# Com DALL-E 3
+artist = ArtistAgent(provider=OpenAI(), image_backend="openai")
 
-# С Google Nano Banana
-художник = ArtistAgent(provider=Google(), image_backend="google")
+# Com Google Nano Banana
+artist = ArtistAgent(provider=Google(), image_backend="google")
 
-# С локальной стабильной диффузией
-художник = ArtistAgent(provider=OpenAI(), image_backend="comfyui")
+# Com Stable Diffusion local
+artist = ArtistAgent(provider=OpenAI(), image_backend="comfyui")
 ```
 
 ## Создать изображение
 
-``` питон
-# LLM автоматически оптимизирует подсказку
-await Artist.create("Логотип для моей кофейни", "logo.png")
+```python
+# O LLM otimiza o prompt automaticamente
+await artist.create("Logo para minha cafeteria", "logo.png")
 
-# Нет оптимизации (прямая подсказка)
-жду художника.создать(
-    «Минималистичный логотип для кофейни, плоский дизайн, теплые тона»,
-    "логотип.png",
-    оптимизировать_подсказка = Ложь,
+# Sem otimização (prompt direto)
+await artist.create(
+    "A minimalist logo for a coffee shop, flat design, warm tones",
+    "logo.png",
+    optimize_prompt=False,
 )
 ```
 
 ## Вариации
 
-``` питон
-пути = ждут Artist.create_variations(
-    «Портрет кота в очках»,
-    output_dir="./кошки",
-    п=4,
+```python
+paths = await artist.create_variations(
+    "Retrato de gato com óculos",
+    output_dir="./gatos",
+    n=4,
 )
-# → кошки/image_1.png, image_2.png, image_3.png, image_4.png
+# → gatos/image_1.png, image_2.png, image_3.png, image_4.png
 ```
 
 ## Редактировать изображения
 
-``` питон
-ожидайте Artist.edit_image(
-    "фото.png",
-    «Изменить фон на пляж на закате»,
+```python
+await artist.edit_image(
+    "foto.png",
+    "Mude o fundo para uma praia ao pôr do sol",
     output_path="foto_praia.png",
 )
 ```

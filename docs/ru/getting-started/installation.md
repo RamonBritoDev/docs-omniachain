@@ -1,44 +1,44 @@
-# Instalação
+# Установка
 
-## Requisitos
+## Требования
 
-- Python **3.11+**
-- pip ou poetry
+- Питон **3.11+**
+- пип или поэзия
 
-## Instalação Básica
+## Базовая установка
 
 ```bash
 pip install omniachain
 ```
 
-## Instalação com Extras
+## Установка с дополнительными функциями
 
-#### Todos os extras
+#### Все дополнительные услуги
 
 ```bash
 pip install omniachain[all]
 ```
 
-#### Vetorial (pgvector)
+#### Вектор (pgvector)
 
 ```bash
 pip install omniachain[vector]
 ```
 
-#### Browser (Playwright)
+#### Браузер (Драматург)
 
 ```bash
 pip install omniachain[browser]
 playwright install chromium
 ```
 
-#### Áudio (Whisper)
+#### Аудио (шепот)
 
 ```bash
 pip install omniachain[audio]
 ```
 
-## Desenvolvimento Local
+## Местное развитие
 
 ```bash
 # Clone o repositório oficial
@@ -52,29 +52,29 @@ pip install -e ".[all]"
 pytest tests/ -v
 ```
 
-## Dependências do Sistema
+## Системные зависимости
 
-!!! info "FFmpeg (para vídeo e áudio)"
-    O `VideoLoader` e `AudioLoader` precisam do ffmpeg:
+!!! информация «FFmpeg (для видео и аудио)»
+    `VideoLoader` и `AudioLoader` нуждаются в ffmpeg:
 
-    === "Windows"
+=== "Окна"
         ```bash
         winget install Gyan.FFmpeg
         ```
 
-    === "macOS"
+=== "macOS"
         ```bash
         brew install ffmpeg
         ```
 
-    === "Linux"
+=== "Линукс"
         ```bash
         sudo apt install ffmpeg
         ```
 
-## Variáveis de Ambiente
+## Переменные среды
 
-Crie um `.env` ou exporte:
+Создайте `.env` или экспортируйте:
 
 ```bash
 # API Keys (pelo menos um)
@@ -90,5 +90,5 @@ export OMNIA_PGVECTOR_DSN="postgresql://user:pass@localhost/omniachain"
 export OMNIA_SECURITY_ENABLED="true"
 ```
 
-!!! success "Pronto!"
-    Agora siga para [Primeiro Agente](first-agent.md) →
+!!! успех «Готов!»
+    Теперь перейдите в [Первый агент](first-agent.md) →

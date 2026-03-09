@@ -4,38 +4,38 @@
 
 ## Использование
 
-``` питон
-из импорта omniachain MultimodalAgent, OpenAI
+```python
+from omniachain import MultimodalAgent, OpenAI
 
-агент = MultimodalAgent(provider=OpenAI("gpt-4o"))
+agent = MultimodalAgent(provider=OpenAI("gpt-4o"))
 
-результат = ожидайте агента.запуск(
-    «Проанализируйте все эти данные и подготовьте резюме»,
-    входы=[
-        "relatorio.pdf", # PDF → извлеченный текст
-        "grafico_vendas.png", # Изображение → base64 (просмотр)
-        "data.csv", #CSV → таблица + статистика
-        "intervista.mp3", # Аудио → Шепот транскрипция
-        "presentacao.mp4", # Видео → кадры + аудио
-        "https://example.com", # URL → парсинг
+result = await agent.run(
+    "Analise todos esses dados e gere um resumo executivo",
+    inputs=[
+        "relatorio.pdf",           # PDF → texto extraído
+        "grafico_vendas.png",      # Imagem → base64 (visão)
+        "dados.csv",               # CSV → tabela + estatísticas
+        "entrevista.mp3",          # Áudio → transcrição Whisper
+        "apresentacao.mp4",        # Vídeo → frames + áudio
+        "https://example.com",     # URL → scraping
     ],
 )
 ```
 
 ## Как это работает внутри
 
-```русалка
-график LR
-    A[входы] --> B[Автозагрузчик]
-    B --> C{Тип обнаружения}
-    C -->|.pdf| Д[PDFLoader]
+```mermaid
+graph LR
+    A[inputs] --> B[AutoLoader]
+    B --> C{Detecta tipo}
+    C -->|.pdf| D[PDFLoader]
     C -->|.png/.jpg| E[ImageLoader]
-    C -->|.mp3/.wav| F[АудиоЗагрузчик]
-    C -->|.mp4/YouTube| G[ВидеоЗагрузчик]
+    C -->|.mp3/.wav| F[AudioLoader]
+    C -->|.mp4/YouTube| G[VideoLoader]
     C -->|.csv/.xlsx| H[CSVLoader]
-    С -->|http://| Я[URLLoader]
+    C -->|http://| I[URLLoader]
     D & E & F & G & H & I --> J[MessageContent]
-    J --> K[Поставщик с видением]
+    J --> K[Provider com visão]
 ```
 
 ## Поддерживаемые типы
@@ -59,12 +59,12 @@
 2. **🎵 Аудио**: Извлечение дорожки → Шепотная транскрипция
 3. **📊 Метаданные**: продолжительность, разрешение, кодек, частота кадров в секунду.
 
-``` питон
-из omniachain.loaders.video импортировать VideoLoader
+```python
+from omniachain.loaders.video import VideoLoader
 
-загрузчик = VideoLoader(num_frames=6, transcribe_audio=True)
-содержимое = ждут loader.load("video.mp4")
-# → [сводка, кадр1, кадр2, ..., кадр6, расшифровка]
+loader = VideoLoader(num_frames=6, transcribe_audio=True)
+contents = await loader.load("video.mp4")
+# → [resumo, frame1, frame2, ..., frame6, transcrição]
 ```
 
 !!! предупреждение «Требование»

@@ -13,37 +13,42 @@ pip install omniachain
 
 ## Installation with Extras
 
-=== "All extras"
+#### All extras
 
 ```bash
-    pip install omniachain[all]
-    ```
+pip install omniachain[all]
+```
 
-=== "Vector (pgvector)"
-
-```bash
-    pip install omniachain[vector]
-    ```
-
-=== "Browser (Playwright)"
+#### Vector (pgvector)
 
 ```bash
-    pip install omniachain[browser]
-    playwright install chromium
-    ```
+pip install omniachain[vector]
+```
 
-=== "Audio (Whisper)"
+#### Browser (Playwright)
 
 ```bash
-    pip install omniachain[audio]
-    ```
+pip install omniachain[browser]
+playwright install chromium
+```
+
+#### Audio (Whisper)
+
+```bash
+pip install omniachain[audio]
+```
 
 ## Local Development
 
 ```bash
-git clone https://github.com/omniachain/omniachain.git
+# Clone the official repository
+git clone https://github.com/RamonBritoDev/omniachain.git
 cd omniachain
+
+# Install in editable mode with all development dependencies
 pip install -e ".[all]"
+
+# Run the test suite
 pytest tests/ -v
 ```
 
